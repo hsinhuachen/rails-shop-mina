@@ -18,11 +18,14 @@ class Cart
 	def remove_item(product_id)
 		found_item = items.find {|item| item.product_id == product_id}
 
+		@items.delete(found_item)
+	end
+
+	def remove_quantity(product_id)
+		found_item = items.find {|item| item.product_id == product_id}
+
 		if found_item
 			found_item.decrease
-			if found_item.quantity == 0
-				@items.delete(found_item)
-			end
 		end
 	end
 

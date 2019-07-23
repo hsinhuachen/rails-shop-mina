@@ -14,6 +14,11 @@
 @import "bootstrap-custom";
 @import "cart";
 
+.btn{
+	outline: none !important;
+	box-shadow: none;
+}
+
 body, #header{
 	background-image: url('../assets/shf_bkg.jpg');
     background-position: left top;
@@ -24,6 +29,11 @@ body, #header{
     border-top: 1px solid #DEDEDE;
 }
 
+.isDisabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+	text-decoration: none;
+}
 
 #footer{
 	padding-top: 200px;

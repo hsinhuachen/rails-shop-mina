@@ -32,7 +32,16 @@ RSpec.describe Cart, type: :model do
 	        expect(cart.items.second.product_id).to be p2.id
 	        expect(cart.items.first.product).to be_a Product
 		end
-		it "在購物車移除相同種類的商品" do
+		it "將商品移出購物車" do
+			cart = Cart.new
+
+			p1 = Product.create(title: "Product 1", price: 100)
+			3.times { cart.add_item(p1.id) }
+			cart.remove_item(p1.id)
+
+			expect(cart.items.length).to be 0
+		end
+		it "在購物車移除商品數量" do
 			cart = Cart.new
 
 			p1 = Product.create(title: "Product 1", price: 100)
@@ -40,23 +49,24 @@ RSpec.describe Cart, type: :model do
 
 			3.times { cart.add_item(p1.id) }
 			5.times { cart.add_item(p2.id) }
-			cart.remove_item(p1.id)
-			4.times { cart.remove_item(p2.id) }
+			
+			cart.remove_quantity(p1.id)
+			4.times { cart.remove_quantity(p2.id) }
 
 			expect(cart.items.first.quantity).to be 2
 			expect(cart.items.second.quantity).to be 1
 		end
-		it "當商品數量為0的時候, 將商品移出購物車" do
-			cart = Cart.new
+		# it "當商品數量為0的時候, 將商品移出購物車" do
+		# 	cart = Cart.new
 
-			p1 = Product.create(title: "Product 1", price: 100)
-			p2 = Product.create(title: "Product 2", price: 200)
+		# 	p1 = Product.create(title: "Product 1", price: 100)
+		# 	p2 = Product.create(title: "Product 2", price: 200)
 
-			cart.add_item(p1.id)
-			cart.remove_item(p1.id)
+		# 	cart.add_item(p1.id)
+		# 	cart.remove_item(p1.id)
 
-			expect(cart.items.length).to be 0
-		end
+		# 	expect(cart.items.length).to be 0
+		# end
 		
 		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）"
 	end
