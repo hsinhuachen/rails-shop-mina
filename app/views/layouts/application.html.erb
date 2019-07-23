@@ -10,6 +10,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flash" if notice %>
+    <div class="container">
+      <%= yield %>
+
+      <footer id="footer">
+        &copy; 2019 
+      </footer>
+    </div>
   </body>
 </html>

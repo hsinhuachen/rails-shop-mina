@@ -1,0 +1,14 @@
+<h1>商品列表</h1>
+<div class="list">
+	<div class="row">
+	<% @products.each do |product| %>
+		<div class="col-sm">
+			<h2 class="shop-item-name"><%= link_to product.title, product_path(product) %></h2>
+			<div class="shop-item-price">NT$ <%= product.price %></div>
+			<div>
+				<%= link_to "加入購物車", add_cart_path(product.id), method: :put, class: "btn btn-success" %>
+			</div>
+		</div>
+	<% end %>
+	</div> <!-- /row -->
+</div> <!-- /list -->

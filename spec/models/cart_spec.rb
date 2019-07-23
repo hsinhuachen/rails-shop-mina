@@ -32,19 +32,30 @@ RSpec.describe Cart, type: :model do
 	        expect(cart.items.second.product_id).to be p2.id
 	        expect(cart.items.first.product).to be_a Product
 		end
-		it "商品可以移出購物車" do
+		it "在購物車移除相同種類的商品" do
 			cart = Cart.new
-			cart.add_item 2
-			cart.remove_item 1
 
-			expect(cart.items.length).to be 1
+			p1 = Product.create(title: "Product 1", price: 100)
+			p2 = Product.create(title: "Product 2", price: 200)
+
+			3.times { cart.add_item(p1.id) }
+			5.times { cart.add_item(p2.id) }
+			cart.remove_item(p1.id)
+			4.times { cart.remove_item(p2.id) }
+
+			expect(cart.items.first.quantity).to be 2
+			expect(cart.items.second.quantity).to be 1
 		end
-		it "如果購物車數量剩1的時候, 商品移出購物車時, 清空購物車" do
-			# cart = Cart.new
-			# cart.add_item 1
-			# cart.remove_item 1
+		it "當商品數量為0的時候, 將商品移出購物車" do
+			cart = Cart.new
 
-			# expect(cart.items.length).to be 0
+			p1 = Product.create(title: "Product 1", price: 100)
+			p2 = Product.create(title: "Product 2", price: 200)
+
+			cart.add_item(p1.id)
+			cart.remove_item(p1.id)
+
+			expect(cart.items.length).to be 0
 		end
 		
 		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）"

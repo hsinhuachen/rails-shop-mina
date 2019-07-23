@@ -1,0 +1,95 @@
+<h1>購物車</h1>
+<%= link_to '清空購物車', cart_path, method: :delete, class: 'btn btn-danger btn-sm' %>
+<div class="cart-wrap">
+	<div class="cart-wrap-table">
+		<div class="cart-list-head cart-list-row hidden-xs">
+            <div class="cart-item-title cart-item">&nbsp;</div>
+            <div class="cart-thumb cart-item">商品名稱</div>
+            <div class="cart-info">
+              <div class="cart-item-price cart-item text-center">單價</div>
+              <div class="cart-item-count cart-item text-center">數量</div>
+              <div class="cart-item-total cart-item text-center">小計</div>
+            </div>
+            <div class="cart-del cart-item text-center">刪除</div>
+        </div> <!-- /cart-list-head -->
+		<% @carts.each do |cart| %>
+        <div class="cart-list-row tline">
+            <div class="cart-item-title cart-item">
+            	<%= link_to cart.product.title, product_path(cart.product.id) %>
+            </div>
+            <div class="cart-thumb cart-item">
+              
+            </div>
+            <div class="cart-info inline">
+              <div class="cart-item-spec cart-item visible-xs">100g</div>
+              <div class="cart-item-price cart-item text-center">NT$ <%= cart.product.price %></div>
+               <div class="cart-item-count cart-item text-center">
+                  <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="count1">
+                          -
+                        </button>
+                      </span>
+                      <input type="text" name="count" class="form-control text-center" min="1" max="101" id="count1" value="<%= cart.quantity %>">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="count1">
+                          +
+                        </button>
+                      </span>
+                    </div>
+                </div>
+                <div class="cart-item-total cart-item text-center cart-label" data-label="小計">NT$ <%= cart.price %></div>
+              </div> <!-- /cart-info -->
+              <div class="cart-del cart-item text-center">
+				        <%= link_to "移除","#", class: "btn btn-danger" %>
+              </a>
+            </div>
+        </div> <!-- /cart-list-row -->
+		<% end %>
+	</div> <!-- /cart-wrap-table -->
+  <div class="cart-collaterals bottomLine">
+      <div class="row">
+        <div class="cart-shipping-info col-sm">
+          運費計算與優惠辦法
+          <ul>
+            <li>購物未滿 NT2,000 元，單筆訂單運費 150 元（限單一定點）</li>
+            <li>購物滿 NT2,000 元免運費（限單一定點）</li>
+          </ul>
+        </div> <!-- /col-md-6 -->
+        <div class="col-sm">
+          <div class="cart-sum">
+            <div class="row">
+                <div class="col-sm text-right cart-title">商品總計</div>
+                <div class="col-sm text-right">NT$ <%= current_cart.total_price %></div>
+              </div>
+              <div class="row">
+                <div class="col-sm text-right cart-title">折扣金額</div>
+                <div class="col-sm text-right">NT$ 0</div>
+              </div>
+              <div class="row">
+                <div class="col-sm text-right cart-title">貨到付款手續費</div>
+                <div class="col-sm text-right">NT$ 0</div>
+              </div>
+              <div class="row">
+                <div class="col-sm text-right cart-title">運費</div>
+                <div class="col-sm text-right"><span class="text-danger">NT$ 0</span></div>
+              </div>
+            </div> <!-- /cart-sum -->
+        </div> <!-- /col-md-6 -->
+      </div> <!-- /row -->
+  </div> <!-- /cart-collaterals -->
+  <hr class="bottomLine visible-sm visible-xs">
+  <div class="cart-end">
+    <div class="row">
+      <div class="col-sm hidden-sm hidden-xs"></div>
+      <div class="col-sm">
+        <div class="cart-sum">
+           <div class="row">
+             <div class="col-sm text-right cart-title"><strong>商品總金額</strong></div>
+             <div class="col-sm text-right"><strong>NT$ <%= current_cart.total_price %></strong></div>
+           </div> <!-- /row -->
+        </div> <!-- /cart-sum -->
+      </div> <!-- /col-sm-6 -->
+    </div> <!-- /row -->
+  </div> <!-- /cart-end -->
+</div> <!-- /cart-wrap -->

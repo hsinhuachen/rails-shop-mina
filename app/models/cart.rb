@@ -19,10 +19,9 @@ class Cart
 		found_item = items.find {|item| item.product_id == product_id}
 
 		if found_item
-			if found_item.quantity == 1
-				items.delete_at(product_id)
-			else
-				found_item.decrease
+			found_item.decrease
+			if found_item.quantity == 0
+				@items.delete(found_item)
 			end
 		end
 	end
