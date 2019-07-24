@@ -3,7 +3,4 @@ class Product < ApplicationRecord
 	belongs_to :category
 	mount_uploader :image, ImageUploader
 
-	def category_ids=(ids)
-
-	end
 end
