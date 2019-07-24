@@ -1,13 +1,13 @@
 Trestle.resource(:products) do
   menu do
-    item :products, icon: "fa fa-star", label: "商品列表"
+    item :products, icon: "fa fa-shopping-bag", label: "商品列表"
   end
 
   # Customize the table columns shown on the index view.
   #
   table do
-    column :title
-    column :price
+    column :title, header: "商品名稱"
+    column :price, header: "價格"
     column :latest, align: :center, link: false, header: "精選商品" do |product|
       if product.latest then 
         # status_tag(icon("fa fa-check"), :success) 
@@ -34,6 +34,8 @@ Trestle.resource(:products) do
     text_field :title
     text_area :description
     text_field :price, prepend: "$"
+    text_field :category_id
+    # select  :category_id, Category.all, { label: "類別" }
 
     form_group :image, label: "產品縮圖", help: "圖片尺寸 1920x1080px" do
         concat content_tag(:div, nil, class: "previewimg", id: "thumbpreview"){ 

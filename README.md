@@ -9,7 +9,14 @@ Things you may want to cover:
 - 2.5.3
 
 * Gem
+- gem gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
 - gem 'trestle'
 - gem 'carrierwave', '~> 1.0'
 - gem 'mini_magick', ">= 4.9.4"
 
+* trestle admin
+- rails generate trestle:resource Product
+- rails generate trestle:resource Category
+
+* add Category
+- rails g model Category title:string sorting:integer
