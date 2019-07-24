@@ -1,0 +1,37 @@
+<div class="cart-wrap">
+  <%= render partial: "carts/step", locals: { active: 2 } %>
+	
+	<div class="cart-wrap-table">
+		<div class="cart-list-head cart-list-row hidden-xs">
+        <div class="cart-item-title cart-item">&nbsp;</div>
+        <div class="cart-thumb cart-item">商品名稱</div>
+        <div class="cart-info">
+          <div class="cart-item-price cart-item text-center">單價</div>
+          <div class="cart-item-count cart-item text-center">數量</div>
+          <div class="cart-item-total cart-item text-center">小計</div>
+        </div>
+    </div> <!-- /cart-list-head -->
+		<% current_cart.items.each do |cart| %>
+        <div class="cart-list-row tline">
+            <div class="cart-item-title cart-item">
+            	<%= link_to cart.product.title, product_path(cart.product.id) %>
+            </div>
+            <div class="cart-thumb cart-item">
+              <%= image_tag(cart.product.image.url, class: "img-fluid") if cart.product.image.url %>
+            </div>
+            <div class="cart-info inline">
+              <div class="cart-item-spec cart-item visible-xs"></div>
+              <div class="cart-item-price cart-item text-center">NT$ <%= cart.product.price %></div>
+              <div class="cart-item-count cart-item text-center"><%= cart.quantity %></div>
+              <div class="cart-item-total cart-item text-center cart-label" data-label="小計">NT$ <%= cart.price %></div>
+            </div> <!-- /cart-info -->
+        </div> <!-- /cart-list-row -->
+		<% end %>
+	</div> <!-- /cart-wrap-table -->
+  <%= render "carts/cartinfo" %>
+	
+	<div class="control text-center">
+	    <%= link_to '上一步', cart_path, class: 'btn btn-success' %>
+	    <%= link_to '送出訂單', checkout_cart_path, class: 'btn btn-primary' unless current_cart.empty? %>
+	  </div>
+</div> <!-- /cart-wrap -->

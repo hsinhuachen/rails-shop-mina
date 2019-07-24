@@ -6,19 +6,10 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+- 2.5.3
 
-* System dependencies
+* Gem
+- gem 'trestle'
+- gem 'carrierwave', '~> 1.0'
+- gem 'mini_magick', ">= 4.9.4"
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

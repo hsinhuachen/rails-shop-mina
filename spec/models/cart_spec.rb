@@ -56,17 +56,6 @@ RSpec.describe Cart, type: :model do
 			expect(cart.items.first.quantity).to be 2
 			expect(cart.items.second.quantity).to be 1
 		end
-		# it "當商品數量為0的時候, 將商品移出購物車" do
-		# 	cart = Cart.new
-
-		# 	p1 = Product.create(title: "Product 1", price: 100)
-		# 	p2 = Product.create(title: "Product 2", price: 200)
-
-		# 	cart.add_item(p1.id)
-		# 	cart.remove_item(p1.id)
-
-		# 	expect(cart.items.length).to be 0
-		# end
 		
 		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）"
 	end

@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,800");
 @import "bootstrap-custom";
 @import "cart";
 
@@ -33,6 +34,82 @@ body, #header{
 	cursor: not-allowed;
 	opacity: 0.5;
 	text-decoration: none;
+}
+
+.list{
+
+}
+
+.product-item{
+	padding-bottom: 80px;
+}
+
+.shop-item-img{
+	position: relative;
+    margin-bottom: 23px;
+    border: none;
+    overflow: hidden;
+    display: block;
+}
+
+.shop-item-img:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translateZ(0);
+  mix-blend-mode: color-dodge;
+  background-color: rgba(81, 81, 81, 0.5);
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease;
+  -moz-transition: opacity 0.6s ease;
+  -ms-transition: opacity 0.6s ease;
+  -o-transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease;
+}
+
+.shop-item-img:hover:before {
+  opacity: 1;
+}
+
+.shop-item-img img {
+  -webkit-transition: transform 0.6s ease;
+  -moz-transition: transform 0.6s ease;
+  -ms-transition: transform 0.6s ease;
+  -o-transition: transform 0.6s ease;
+  transition: transform 0.6s ease;
+}
+
+.shop-item-img:hover img {
+  transform: scale(1.1);
+}
+
+.shop-item-name {
+    color: #212121;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 127%;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    a{
+    	color: #212121;
+    }
+}
+
+.shop-item-price {
+    color: #FF6925;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 100%;
+}
+
+.shop-list-options{
+	padding-top: 30px;
 }
 
 #footer{

@@ -1,3 +1,52 @@
+.cart-wrap{
+  padding-top: 30px;
+}
+
+.shopping_steps {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+.step_number {
+  color: $primary;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto 16px auto;
+  background: #EDECE5;
+  display: block;
+}
+
+.step_arrow {
+  padding: 0 5%;
+  display: inline-block;
+}
+.step_arrow .glyphicon {
+  font-size: 11px;
+}
+
+.step_normal {
+  color: #444444;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 100%;
+  display: inline-block;
+}
+.step_normal.current {
+  color: $primary;
+}
+.step_normal.current .step_number {
+  color: #EDECE5;
+  background: $primary;
+}
+
 .cart-wrap-table {
   font-size: 0;
   margin-bottom: 20px;
@@ -96,3 +145,17 @@
     letter-spacing: 1.22px;
     line-height: 100%;
 }
+
+.control{
+  font-size: 0;
+  padding-top: 80px;
+  .btn{
+    font-size: 18px;
+    width: 315px;
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    margin: 0 15px;
+  }
+}
+
