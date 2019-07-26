@@ -13,7 +13,12 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,800");
 @import "bootstrap-custom";
+@import "product";
 @import "cart";
+
+html{
+  scroll-behavior: smooth;
+}
 
 .btn{
 	outline: none !important;
@@ -22,8 +27,16 @@
 
 body, #header{
 	background-image: url('../assets/shf_bkg.jpg');
-    background-position: left top;
-    background-repeat: repeat;
+  background-position: left top;
+  background-repeat: repeat;
+}
+
+body {
+    font-family: "PingFang TC", "Helvetica Neue", "Helvetica", "Microsoft JhengHei", 微軟正黑體, "Arial", sans-serif;
+    font-size: 15px;
+    line-height: 1.42857;
+    color: #444444;
+    background-color: #FBF7EF;
 }
 
 .tline {
@@ -34,6 +47,29 @@ body, #header{
 	cursor: not-allowed;
 	opacity: 0.5;
 	text-decoration: none;
+}
+
+.categories{
+  list-style: none;
+  li{
+    display: inline-block;
+    a{
+      color: #444444;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 60px;
+      padding: 0 15px;
+      -webkit-transition: color 0.6s ease;
+      -moz-transition: color 0.6s ease;
+      -ms-transition: color 0.6s ease;
+      -o-transition: color 0.6s ease;
+      transition: color 0.6s ease;
+      &:hover, &.active{
+        color: $primary;
+      }
+    }
+  }
 }
 
 .list{
@@ -110,6 +146,27 @@ body, #header{
 
 .shop-list-options{
 	padding-top: 30px;
+}
+
+.article{
+  color: #444444;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 172%;
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.breadcrumb{
+  span{
+    padding: 0 10px;
+  }
+  a{
+    color: #444;
+  }
 }
 
 #footer{

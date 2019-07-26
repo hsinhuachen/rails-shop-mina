@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  	add_breadcrumb "購物車", :products_path
+
 	def show
 		@carts = current_cart.items
 	end

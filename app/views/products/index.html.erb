@@ -1,4 +1,18 @@
 <% content_for :titletag, "商品列表" %>
+<ul class="categories text-center">
+	<li>
+		<% if params[:id] %>
+			<%= link_to '全部商品', products_path %>
+		<% else	%>
+			<%= link_to '全部商品', products_path, class: "active" %>
+		<% end	%>
+	</li>
+	<% @categories.each do |category| %>
+	<li>
+		<%= link_to category.title, category_path(category.id), :class => current_class?(category_path(category.id)) %>
+	</li>
+	<% end	%>
+</ul>
 <div class="list">
 	<div class="row">
 	<% @products.each do |product| %>

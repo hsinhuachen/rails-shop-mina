@@ -1,2 +1,69 @@
 <% content_for :titletag, @product.title %>
-<h1><%= @product.title %></h1>
+<div class="product-detail">
+	<div class="row">
+		<div class="col-md-6">
+			<%= image_tag(@product.image.url, class: "img-fluid") if @product.image.url %>
+		</div>
+		<div class="col-md-6">
+			<h1 class="shop-detail-name"><%= @product.title %></h1>
+			<p class="product-txt"><%= @product.description %></p>
+
+			<div class="shop-item-price">NT$ <%= @product.price %></div>
+			<div class="shop-list-options">
+				<%= link_to "#{image_tag("cart.svg", width: 22)} 加入購物車".html_safe, add_cart_path(@product.id), method: :put, class: "add-cart btn btn-primary d-block" %>
+			</div>
+		</div>
+	</div> <!-- /row -->
+	<div class="product-content">
+	    <ul class="nav nav-tabs">
+	      <li class="nav-item"><a data-toggle="tab" href="#tab1" class="nav-link active" role="tab" aria-controls="tab1" aria-selected="true">商品情報</a></li>
+	      <li class="nav-item"><a data-toggle="tab" href="#tab2" class="nav-link" role="tab" aria-controls="tab2" aria-selected="true">檢驗報告</a></li>
+	      <li class="nav-item"><a data-toggle="tab" href="#tab3" class="nav-link" role="tab" aria-controls="tab3" aria-selected="true">付款與配送說明</a></li>
+	    </ul>
+
+	    <div class="tab-content">
+	      <div id="tab1" class="tab-pane fade show active">
+	        <div class="article">
+	          <ul>
+	            <li>商品：台灣野生大明蝦</li>
+	            <li>重量：1000g/包(平均7-9尾)</li>
+	            <li>包裝：真空包裝內含1盒大明蝦</li>
+	            <li>解凍方式：不拆封流水解凍</li>
+	            <li>注意事項：食用時請小心蝦頭尖刺。本產品含有蝦蟹類不適合其過敏體質者食用。</li>
+	          </ul>
+	          <br>
+	          <img src="/assets/img_product_3_nutrition.jpg" alt="">
+	          <br><br><br><br>
+	          <figure><div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" src="https://www.youtube.com/embed/YILGsSS3PD4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div></figure><br>
+	          <a href="">編輯器可加入連結</a>
+	        </div> <!-- /article -->  
+	      </div> <!-- /tab-pane -->
+	      <div id="tab2" class="tab-pane fade">
+	        <div class="article">
+	          自主送檢驗管理，此批明蝦檢驗項目為：水產品重金屬及甲機汞檢驗。<br>
+	          送驗單位：全國公証檢驗股份有限公司
+	          
+	        </div> <!-- /article -->  
+	      </div> <!-- /tab-pane -->
+	      <div id="tab3" class="tab-pane fade">
+	        <div class="article">
+	          <strong>運費計算與優惠辦法</strong>
+	          <ul>
+	            <li>購物未滿 2,000 元，單筆訂單運費 150 元（限單一定點）</li>
+	            <li>購物滿 2,000 元免運費（限單一定點）</li>
+	          </ul>
+
+	          <br>
+	          <strong>網路訂購付款方式</strong>
+	          <ul>
+	            <li>信用卡線上刷卡：可接受 VISA, Master, JCB</li>
+	            <li>貨到付款：選擇貨到付款者，在實際送貨收款時，除訂單明細的總金額外，每筆訂單需依收現金額支付對應服務手續費。貨到付款金額超過 10 萬元者，恕無法提供貨到付款的服務。</li>
+	          </ul>
+	          <br>
+	          <strong>注意事項</strong><br>
+	          國定假日及例假日成立的訂單，將延至星期一或假日後一天處理。
+	        </div> <!-- /article -->                
+	      </div> <!-- /tab-pane -->
+	    </div> <!-- /tab-content -->
+	</div> <!-- /product-content -->
+</div> <!-- /product-detail -->

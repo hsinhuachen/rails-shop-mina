@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 	root 'welcome#index'
 
 	resources :products, only: [:index, :show]
+  	get "/products/category/:id", to: "products#index", :as => :category
 
 	resource  :cart, only: [:show, :destroy] do
 	  	collection do
@@ -12,4 +13,8 @@ Rails.application.routes.draw do
 	  		get :checkout
 	  	end
 	end
+
+	# resources :categories
+
+	# end
 end

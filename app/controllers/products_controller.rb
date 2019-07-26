@@ -1,12 +1,20 @@
 class ProductsController < ApplicationController
   	before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  	add_breadcrumb "線上購買", :products_path
+
 	def index
-		@products = Product.all
+		if params[:id]
+			@products = Product.where(category_id: params[:id], publish: true)
+		else
+			@products = Product.where(publish: true)
+		end
+		@categories = Category.all
 	end
 
 	def show
-		
+		product = Product.find(params[:id])
+		add_breadcrumb product.title, product_path(params[:id])
 	end
 
 	private
