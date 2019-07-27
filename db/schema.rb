@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_131210) do
+ActiveRecord::Schema.define(version: 2019_07_27_140534) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
+    t.integer "sorting", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.string "image"
+    t.text "desc"
     t.integer "sorting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "publish"
   end
 
   create_table "products", force: :cascade do |t|
@@ -26,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_131210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.boolean "publish"
-    t.boolean "latest"
+    t.boolean "publish", default: false
+    t.boolean "latest", default: false
     t.integer "category_id"
   end
 

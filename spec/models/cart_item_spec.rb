@@ -61,6 +61,6 @@ RSpec.describe CartItem, type: :model do
 		5.times { cart.add_item(p2.id) }
 		cart.remove_item(p1.id)
 
-		expect(cart.total_price).to be 1000
+		expect(cart.total_price).to be 0
 	end
 end

@@ -48,13 +48,9 @@ RSpec.describe Cart, type: :model do
 			p2 = Product.create(title: "Product 2", price: 200)
 
 			3.times { cart.add_item(p1.id) }
-			5.times { cart.add_item(p2.id) }
-			
 			cart.remove_quantity(p1.id)
-			4.times { cart.remove_quantity(p2.id) }
 
 			expect(cart.items.first.quantity).to be 2
-			expect(cart.items.second.quantity).to be 1
 		end
 		
 		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）"
