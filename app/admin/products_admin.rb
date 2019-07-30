@@ -1,6 +1,8 @@
 Trestle.resource(:products) do
   menu do
-    item :products, icon: "fa fa-shopping-bag", label: "商品列表"
+    group :product do
+      item :products, icon: "fa fa-shopping-bag", label: "商品列表"
+    end
   end
 
   # Customize the table columns shown on the index view.

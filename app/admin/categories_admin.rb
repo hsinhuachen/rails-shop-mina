@@ -1,6 +1,8 @@
 Trestle.resource(:categories) do
   menu do
-    item :categories, icon: "fa fa-tags", label: "商品類別"
+    group :product do
+      item :categories, icon: "fa fa-tags", label: "商品類別"
+    end
   end
 
   # scope :all, -> { Category.order("sorting desc") }, default: true

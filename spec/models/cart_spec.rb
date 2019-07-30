@@ -22,8 +22,9 @@ RSpec.describe Cart, type: :model do
 		it "商品可以放到購物車裡，也可以再拿出來" do
 			cart = Cart.new
 
-			p1 = Product.create(title: "Product 1", price: 100)
-			p2 = Product.create(title: "Product 2", price: 200)
+			c1 = Category.create(title: "shop")
+			p1 = Product.create(title: "Product 1", price: 100, category_id: c1.id)
+			p2 = Product.create(title: "Product 2", price: 200, category_id: c1.id)
 
 			4.times { cart.add_item(p1.id) }
 			3.times { cart.add_item(p2.id) }
@@ -35,7 +36,8 @@ RSpec.describe Cart, type: :model do
 		it "將商品移出購物車" do
 			cart = Cart.new
 
-			p1 = Product.create(title: "Product 1", price: 100)
+			c1 = Category.create(title: "shop")
+			p1 = Product.create(title: "Product 1", price: 100, category_id: c1.id)
 			3.times { cart.add_item(p1.id) }
 			cart.remove_item(p1.id)
 
@@ -44,8 +46,9 @@ RSpec.describe Cart, type: :model do
 		it "在購物車移除商品數量" do
 			cart = Cart.new
 
-			p1 = Product.create(title: "Product 1", price: 100)
-			p2 = Product.create(title: "Product 2", price: 200)
+			c1 = Category.create(title: "shop")
+			p1 = Product.create(title: "Product 1", price: 100, category_id: c1.id)
+			p2 = Product.create(title: "Product 2", price: 200, category_id: c1.id)
 
 			3.times { cart.add_item(p1.id) }
 			cart.remove_quantity(p1.id)
