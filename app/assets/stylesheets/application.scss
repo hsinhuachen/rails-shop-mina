@@ -13,6 +13,7 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,800");
 @import "bootstrap-custom";
+@import "cycle";
 @import "product";
 @import "cart";
 
@@ -142,6 +143,9 @@ body {
     font-size: 18px;
     letter-spacing: 1px;
     line-height: 100%;
+    &.big{
+      font-size: 24px;
+    }
 }
 
 .shop-list-options{
@@ -161,6 +165,7 @@ body {
 }
 
 .breadcrumb{
+  padding-bottom: 20px;
   span{
     padding: 0 10px;
   }

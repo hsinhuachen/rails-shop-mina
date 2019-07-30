@@ -1,4 +1,8 @@
 Trestle.resource(:products) do
+  scope :all, -> { Product.all }, default: true
+  scope :published, -> { Product.where(publish: true) }, label: "已發佈"
+  scope :unpublished, -> { Product.where(publish: false) }, label: "未發佈"
+
   menu do
     group :product do
       item :products, icon: "fa fa-shopping-bag", label: "商品列表"

@@ -1,1 +1,11 @@
 <% content_for :titletag, "Shop" %>
+<%= render partial: "shared/cycle", locals: {cycle: @cycle} %>
+
+<div class="list">
+	<div class="row">
+		<% @products.each do |product| %>
+		<%= render partial: "shared/productitem", locals: {product: product, column: "col-sm-4"} %>
+		<% end %>
+	</div>
+</div>
+

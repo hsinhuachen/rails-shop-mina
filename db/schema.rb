@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_07_27_140534) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
-    t.integer "sorting", default: 0
+    t.integer "sorting"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_07_27_140534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.boolean "publish", default: false
-    t.boolean "latest", default: false
+    t.boolean "publish"
+    t.boolean "latest"
     t.integer "category_id"
   end
 
