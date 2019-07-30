@@ -3,5 +3,5 @@ class Product < ApplicationRecord
 	belongs_to :category
 	mount_uploader :image, ImageUploader
 
-	# default_scope -> { order('sorting DESC') }
+	default_scope -> { order('sorting DESC') }
 end

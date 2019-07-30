@@ -19,7 +19,7 @@ Things you may want to cover:
 * rails generate trestle:resource Category
 * rails generate trestle:resource Home
 
-## add Category
+## add Model
 * rails g model Category title:string sorting:integer
 * rails g model Home image:string desc:text sorting:integer
 

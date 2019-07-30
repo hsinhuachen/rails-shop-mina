@@ -15,6 +15,7 @@ Trestle.resource(:products) do
     column :title, header: "商品名稱"
     column :price, header: "價格"
     column :category, header: "類別"
+    column :sorting, header: "排序"
     column :latest, align: :center, link: false, header: "精選商品" do |product|
       if product.latest then 
         # status_tag(icon("fa fa-check"), :success) 
@@ -40,8 +41,8 @@ Trestle.resource(:products) do
   form do |product|
     text_field :title
     text_area :description
-    text_field :price, prepend: "$"
-
+    text_field :price, prepend: "$", label: "價格"
+    text_field :sorting, label: "排序"
     select  :category_id, Category.all, { label: "類別" }
 
     form_group :image, label: "產品縮圖", help: "圖片尺寸 1920x1080px" do

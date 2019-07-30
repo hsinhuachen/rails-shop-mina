@@ -1,11 +1,46 @@
 <% content_for :titletag, "Shop" %>
-<%= render partial: "shared/cycle", locals: {cycle: @cycle} %>
+
+<section class="section section-left animate-wrap">
+  <div class="row">
+    <div class="section-object col-md-7 animate-item" data-animate-type="fadeIn">
+       <%= image_tag("index/img_shinherfa_inx_about.jpg", alt: "about", class:"img-fluid") %>
+    </div>
+    <div class="section-body col-md-5">
+      <div class="section-header animate-item delay-1 fadeIn" data-animate-type="fadeIn">
+        <h2 class="section-heading">ABOUT</h2>
+        <h5 class="section-en">STORY OF SHINHERFA</h5>
+      </div>
+
+      <h3 class="section-sub fw600 animate-item delay-2" data-animate-type="fadeIn">台灣宜蘭南方澳<br>鯖魚的故鄉</h3>
+      <p class="normal text-justify animate-item delay-3" data-animate-type="fadeIn">南方澳漁港是臺灣東部最大的漁港，具有天然的優良條件，由於黑潮帶來的湧昇流和大陸沿岸流的匯集，造成臺灣東部沿岸經年有表層性洄流魚類，在東部海域依不同季節洄遊，漁業資源豐富。</p>
+      <%= link_to "了解更多", about_path, class: "btn btn-info btn-xs animate-item delay-4", :data => { "animate-type" => 'fadeIn' } %>
+    </div>
+  </div> <!-- /row -->
+</section>
+
+<section class="section section-right animate-wrap">
+  <div class="row">
+    <div class="section-object col-md-7 animate-item" data-animate-type="fadeIn">
+       <%= image_tag("index/img_shinherfa_inx_process.jpg", alt: "about", class:"img-fluid") %>
+    </div>
+    <div class="section-body col-md-5">
+      <div class="section-header animate-item delay-1" data-animate-type="fadeIn">
+        <h2 class="section-heading">PROCESS</h2>
+        <h5 class="section-en">FROM SEA TO TABLE</h5>
+      </div>
+
+      <h3 class="section-sub fw600 animate-item delay-2" data-animate-type="fadeIn">從產地到餐桌<br>最完整的品質管理</h3>
+      <p class="normal text-justify animate-item delay-3" data-animate-type="fadeIn">專注提供優質鯖魚產品，<br />承諾消費者最新鮮冷凍魚貨。</p>
+      <a href="" class="btn btn-info btn-xs animate-item delay-4" data-animate-type="fadeIn">了解更多</a>
+    </div>
+  </div> <!-- /row -->
+</section>
 
 <div class="list">
+	<h2>精選商品</h2>
 	<div class="row">
 		<% @products.each do |product| %>
 		<%= render partial: "shared/productitem", locals: {product: product, column: "col-sm-4"} %>
 		<% end %>
 	</div>
 </div>
-
