@@ -1,7 +1,7 @@
 <% content_for :titletag, @product.title %>
 <div class="product-detail">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-6 shop-detail-photo">
 			<%= image_tag(@product.image.url, class: "img-fluid") if @product.image.url %>
 		</div>
 		<div class="col-md-6">
@@ -24,18 +24,7 @@
 	    <div class="tab-content">
 	      <div id="tab1" class="tab-pane fade show active">
 	        <div class="article">
-	          <ul>
-	            <li>商品：台灣野生大明蝦</li>
-	            <li>重量：1000g/包(平均7-9尾)</li>
-	            <li>包裝：真空包裝內含1盒大明蝦</li>
-	            <li>解凍方式：不拆封流水解凍</li>
-	            <li>注意事項：食用時請小心蝦頭尖刺。本產品含有蝦蟹類不適合其過敏體質者食用。</li>
-	          </ul>
-	          <br>
-	          <img src="/assets/img_product_3_nutrition.jpg" alt="">
-	          <br><br><br><br>
-	          <figure><div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" src="https://www.youtube.com/embed/YILGsSS3PD4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div></figure><br>
-	          <a href="">編輯器可加入連結</a>
+	          <%= @product.report.html_safe %>
 	        </div> <!-- /article -->  
 	      </div> <!-- /tab-pane -->
 	      <div id="tab2" class="tab-pane fade">

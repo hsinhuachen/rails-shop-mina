@@ -26,3 +26,7 @@ Things you may want to cover:
 ## carrierwave
 * rails generate uploader Image
 * rails generate uploader Home
+
+## add spec
+* rails g migration add_spec_to_projects spec:text
+

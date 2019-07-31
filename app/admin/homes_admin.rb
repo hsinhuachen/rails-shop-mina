@@ -6,9 +6,10 @@ Trestle.resource(:homes) do
   # Customize the table columns shown on the index view.
   #
   table do
-    column :image, header: false, class: "col-thumb" do |img|
+    column :image, header: false, class: "col-thumb w40" do |img|
       admin_link_to(image_tag(img.image.url, class: "img-responsive"), img) if img.image?
     end
+    column :desc, header: "圖片描述", class: "col-desc w40"
     column :publish, align: :center, link: false, header: "發佈" do |image|      
       if image.status then 
         link_to(status_tag(icon("fa fa-check"), :success) , admin.path(:cancel_status, id: image.id), method: :post, class: "action-btn")

@@ -39,20 +39,21 @@ Trestle.resource(:products) do
   # Customize the form fields shown on the new/edit views.
   #
   form do |product|
-    text_field :title
-    text_area :description
-    text_field :price, prepend: "$", label: "價格"
-    text_field :sorting, label: "排序"
-    select  :category_id, Category.all, { label: "類別" }
+    tab "basic", label: "基本資訊" do
+      text_field :title
+      text_area :description
+      text_field :price, prepend: "$", label: "價格"
+      text_field :sorting, label: "排序"
+      select  :category_id, Category.all, { label: "類別" }
 
-    form_group :image, label: "產品縮圖", help: "圖片尺寸 1920x1080px" do
-        concat content_tag(:div, nil, class: "previewimg", id: "thumbpreview"){ 
-          concat image_tag(product.image.url, class: "thumbimg") if product.image.url
-        }
-        raw_file_field :image
-    end
+      form_group :image, label: "產品縮圖", help: "圖片尺寸 1920x1080px" do
+          concat content_tag(:div, nil, class: "previewimg", id: "thumbpreview"){ 
+            concat image_tag(product.image.url, class: "thumbimg") if product.image.url
+          }
+          raw_file_field :image
+      end
   
-    form_group :latest, label: "精選專案" do
+      form_group :latest, label: "精選專案" do
         content_tag :fieldset, :class => "btn-group radio" do
           if product.latest == true
             concat content_tag(:input,'', type: "radio", value: true, name: 'product[latest]', id: "product_latest_0", checked: true)
@@ -83,6 +84,11 @@ Trestle.resource(:products) do
           end
         end
       end
+    end # end tab
+    
+    tab "report", label: "商品情報" do
+      editor     :report, label: "商品情報"
+    end # end tab
 
     row do
       col(xs: 6) { datetime_field :updated_at }

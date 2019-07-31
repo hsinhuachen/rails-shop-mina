@@ -53,6 +53,6 @@ class CartsController < ApplicationController
 
 	def destroy
 		session[:cart1111] = nil
-		redirect_to products_path, notice: '購物車已清空'
+		redirect_to cart_path, notice: '購物車已清空'
 	end
 end
