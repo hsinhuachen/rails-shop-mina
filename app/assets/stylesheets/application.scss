@@ -14,6 +14,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,800");
 @import "bootstrap-custom";
 @import "cycle";
+@import "device";
 @import "product";
 @import "cart";
 
@@ -54,6 +55,15 @@ p.normal{
     left: 0;
     right: 0;
     z-index: 600;
+  }
+}
+
+#nav{
+  a{
+    color: #000;
+  }
+  .active{
+    color: $primary;
   }
 }
 
@@ -224,7 +234,7 @@ p.normal{
 
 .shop-list-option{
   margin-bottom: 20px;
-  .form-control, .input-group-btn .btn{
+  .input-group-btn .btn{
     height: 60px;
   }
 }
@@ -259,9 +269,56 @@ p.normal{
   }
 }
 
+.field{
+  padding-bottom: 20px;
+}
+
 .select-sm{
   width: 100%;
   height: 38px;
+}
+
+.form-control{
+  height: 60px;
+}
+
+.col-form-label {
+  color: #444444;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+.member{
+  padding-top: 40px;
+}
+
+.side-nav{
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li{
+    line-height: 100%;
+    padding-bottom: 24px;
+    letter-spacing: 1px;
+    position: relative;
+    display: block;
+    margin-bottom: -1px;
+    background-color: transparent;
+    border: 1px solid transparent !important;
+    color: #444444;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  a{
+    color: #444444;
+    font-size: 18px;
+    font-weight: 400;
+  }
 }
 
 #footer{

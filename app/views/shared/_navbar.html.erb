@@ -1,9 +1,15 @@
 <header id="header" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
   <h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to 'Logo', root_path %></h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-  	<%= link_to '關於我們', about_path, class: 'p-2 text-dark' %>
-    <%= link_to '商品列表', products_path, class: 'p-2 text-dark' %>
-    <%= link_to "購物車(#{current_cart.items.count})", cart_path, class: 'p-2 text-dark' %>
+  <nav id="nav" class="my-2 my-md-0 mr-md-3">
+  	<%= link_to '關於我們', about_path, :class => "p-2 #{current_class?(about_path)}" %>
+    <%= link_to '商品列表', products_path, :class => "p-2 #{current_class?(products_path)}" %>
+    <%= link_to "購物車(#{current_cart.items.count})", cart_path, :class => "p-2 #{current_class?(cart_path)}" %>
   </nav>
-  <a class="btn btn-outline-primary" href="#">註冊</a>
+
+  <% if user_signed_in? %>
+  <%= link_to "會員中心", current_user, class: "btn btn-outline-primary" %>
+  <% #current_user.email %>
+  <% else %>
+  <%= link_to "登入", new_user_session_path, class: "btn btn-outline-primary" %>
+  <% end %>
 </header>

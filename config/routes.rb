@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  	devise_for :users
 	root 'welcome#index'
 
 	resources :products, only: [:index, :show]
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
 	  		get :checkout
 	  	end
 	end
+
+	resources :users, only: [:show]
 
 	# resources :categories
 

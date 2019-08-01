@@ -1,0 +1,21 @@
+<div class="userform">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 mx-auto">
+      	<h2>忘記密碼</h2>
+
+		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		  <%= render "devise/shared/error_messages", resource: resource %>
+
+		  <div class="field">
+		    <%= f.label :email, class: "col-form-label" %><br />
+		    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+		  </div>
+
+		  <div class="actions">
+		    <%= f.submit "重設密碼", class: "btn btn-primary btn-block" %>
+  			<%= link_to "回登入頁", new_session_path(resource_name), class: "btn btn-primary btn-block" %><br />
+		  </div>
+		<% end %>
+	</div>
+ </div> <!-- /row -->
+</div> <!-- /userform -->

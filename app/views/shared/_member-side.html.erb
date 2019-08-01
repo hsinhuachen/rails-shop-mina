@@ -1,0 +1,9 @@
+<div class="side col-md-3">
+	<nav class="side-nav">
+		<ul>
+			<li><%= link_to "基本資訊", current_user, class: "" %></li>
+			<li><%= link_to "修改密碼", edit_user_registration_path	, class: "" %></li>
+			<li><%= link_to "登出", destroy_user_session_path, method: :delete, class: "" %></li>
+		</ul>
+	</nav>
+</div>

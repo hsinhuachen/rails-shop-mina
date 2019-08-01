@@ -1,0 +1,47 @@
+<div class="userform">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 nomargin">
+      <div class="inner">
+        <h2 class="text-center">會員登入</h2>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "請輸入註冊之電子信箱" %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "密碼" %>
+          </div>
+
+          <div class="field">
+            <div class="row">
+              <div class="col-sm-6">
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-sm-6">
+                <%= link_to "忘記密碼", new_password_path(resource_name), class: "text-right d-block" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "會員帳號登入", class: "btn btn-primary btn-block" %>
+          </div>
+        <% end %>
+      </div> <!-- /inner -->
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 nomargin">
+      <div class="inner">
+        <h2 class="text-center">還不是會員嗎？</h2>
+        <%= link_to "立即註冊", new_registration_path(resource_name), class: "btn btn-primary btn-block" %></a>
+        <p class="normal" style="padding-top: 10px">如果您是會員在購物前請先登入！<br />如果還沒註冊建議您先註冊可享有更多的網站服務！</p>
+      </div> <!-- /inner -->
+    </div>
+  </div> <!-- /row -->
+</div> <!-- /userform -->
+
