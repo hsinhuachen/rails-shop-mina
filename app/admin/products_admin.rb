@@ -41,6 +41,7 @@ Trestle.resource(:products) do
   form do |product|
     tab "basic", label: "基本資訊" do
       text_field :title
+      text_field :color
       text_area :description
       text_field :price, prepend: "$", label: "價格"
       text_field :sorting, label: "排序"

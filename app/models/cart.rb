@@ -5,13 +5,19 @@ class Cart
      	@items = items
     end
 
-	def add_item(product_id)
+	def add_item(product_id,quantity = 1)
 		found_item = items.find {|item| item.product_id == product_id}
 
 		if found_item
-			found_item.increment
+			found_item.increment(quantity)
 		else
-			@items << CartItem.new(product_id)
+			new_item = CartItem.new(product_id)
+			@items << new_item
+
+			if quantity > 1
+				quantity -= 1
+				new_item.increment(quantity)
+			end
 		end
 	end
 

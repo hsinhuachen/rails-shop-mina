@@ -14,7 +14,60 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
 $(function(){
+	$(".add_to_cart").click(function(event) {
+		var url = $(this).attr("href");
+		var quantity = $(this).data("quantity");
+		$.ajax({
+		    type: "PUT",
+		    url: url,
+		    data: { quantity: quantity } 
+		});
 
+		return false
+	});
+
+	//數量＋－
+    $(".btn-number").on("click", function(){
+		var btn_type = $(this).data("type");
+		var btn_target = $("#" + $(this).data("field"));
+		var product_cur_count = parseInt(btn_target.val());
+		var product_min = 1;
+		var product_max = btn_target.attr("max");
+
+		if(btn_type == "plus"){
+			if(product_cur_count < product_max){
+			  product_cur_count++;
+			  btn_target.val(product_cur_count);
+			}
+		}else if(btn_type == "minus"){
+			if(product_cur_count > 1){
+				product_cur_count--;
+				btn_target.val(product_cur_count);
+			}
+		}
+
+		// 移除disable
+		if(product_cur_count > 1){
+			$('.btn-number[data-type="minus"]').attr("disabled",false);
+		}else if(product_cur_count == 1){
+			$('.btn-number[data-type="minus"]').attr("disabled",true);
+		}
+
+		if(product_cur_count == product_max){
+			$('.btn-number[data-type="plus"]').attr("disabled",true);
+		}else{
+			$('.btn-number[data-type="plus"]').attr("disabled",false);
+		}
+
+		$("#add_to_cart").attr("data-quantity",product_cur_count);
+
+      	event.preventDefault();
+    });
 })
+
+function selectchange(object,productid){
+	var value = object.value;
+	
+	$("#add_to_cart" + productid).attr("data-quantity",value);
+}

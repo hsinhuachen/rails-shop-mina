@@ -7,10 +7,44 @@
 		<div class="col-md-6">
 			<h1 class="shop-detail-name"><%= @product.title %></h1>
 			<p class="product-txt"><%= @product.description %></p>
-
 			<div class="shop-item-price big">NT$ <%= @product.price %></div>
+			
 			<div class="shop-list-options">
-				<%= link_to "#{image_tag("cart.svg", width: 22)} 加入購物車".html_safe, add_cart_path(@product.id), method: :put, class: "add-cart btn btn-primary d-block" %>
+                <div class="shop-list-option">
+                	<div class="row">
+	                  	<div class="shop-list-title col-md-2">規格：</div>
+	                  	<div class="shop-list-select col-md-10">
+		                    <select class="form-control">
+		                      <option>單片裝</option>
+		                      <option>7片裝</option>
+		                    </select>
+		                </div>
+	                </div>
+                </div> <!-- /shop-list-option -->
+                <div class="shop-list-option">
+                	<div class="row">
+	                  <div class="shop-list-title col-md-2">數量：</div>
+	                  <div class="shop-list-select col-md-10">
+	                    <div class="input-group">
+	                      <span class="input-group-btn">
+	                        <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="count">
+	                          -
+	                        </button>
+	                      </span>
+	                      <input type="text" id="count" name="count" class="form-control text-center" value="1" min="1" max="101">
+	                      <span class="input-group-btn">
+	                        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="count">
+	                          +
+	                        </button>
+	                      </span>
+	                    </div>
+	                </div> <!-- /row -->
+                  </div> <!-- /shop-list-select -->
+                </div> <!-- /shop-list-option -->
+            </div>
+
+			<div class="shop-list-options">
+				<%= link_to "#{image_tag("cart.svg", width: 22)} 加入購物車".html_safe, add_cart_path(@product.id), method: :put, :data => { :'quantity' => 1 }, class: "add-cart add_to_cart btn btn-primary d-block", id: "add_to_cart" %>
 			</div>
 		</div>
 	</div> <!-- /row -->

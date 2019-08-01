@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  	add_breadcrumb "購物車", :products_path
+  	add_breadcrumb "購物車", :cart_path
 
 	def show
 		@carts = current_cart.items
@@ -10,7 +10,8 @@ class CartsController < ApplicationController
 
 		# 如果商品存在
 		if product.present?
-			current_cart.add_item(product.id)
+			current_cart.add_item(product.id,params[:quantity].to_i)
+			# current_cart.add_item(product.id)
 
 			session[:cart1111] = current_cart.serialize
 			redirect_to products_path, notice: '已加入購物車'

@@ -3,6 +3,19 @@
 	<h2 class="shop-item-name"><%= link_to product.title, product_path(product) %></h2>
 	<div class="shop-item-price">NT$ <%= product.price %></div>
 	<div class="shop-list-options">
-		<%= link_to "加入購物車", add_cart_path(product.id), method: :put, class: "btn btn-success" %>
-	</div>
-</div>
+		<div class="row">
+			<div class="col-md-4">
+				<select class="select-sm select-count" onchange="selectchange(this,<%= product.id %>)" name="count2">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			<div class="col-md-8">
+				<%= link_to "加入購物車", add_cart_path(product.id), method: :put, :data => { :'quantity' => 1 }, class: "btn btn-success add_to_cart", id: "add_to_cart#{product.id}" %>
+			</div>
+		</div>
+	</div> <!-- /shop-list-options -->
+</div> <!-- /product-item -->
