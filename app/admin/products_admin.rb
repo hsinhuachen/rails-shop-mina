@@ -4,8 +4,8 @@ Trestle.resource(:products) do
   scope :unpublished, -> { Product.where(publish: false) }, label: "未發佈"
 
   menu do
-    group :product do
-      item :products, icon: "fa fa-shopping-bag", label: "商品列表"
+    group :product, priority: :first do
+      item :products, icon: "fa fa-shopping-bag", label: "商品列表", priority: :first
     end
   end
 
@@ -51,7 +51,7 @@ Trestle.resource(:products) do
           concat content_tag(:div, nil, class: "previewimg", id: "thumbpreview"){ 
             concat image_tag(product.image.url, class: "thumbimg") if product.image.url
           }
-          raw_file_field :image
+          raw_file_field :image, class: "thumbimg"
       end
   
       form_group :latest, label: "精選專案" do

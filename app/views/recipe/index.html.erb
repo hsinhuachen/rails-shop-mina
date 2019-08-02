@@ -1,0 +1,8 @@
+<% @posts.each do |post| %>
+<h2><%= post.title %></h2>
+<div class="row">
+	<% post.ingredients.each do |ingredient| %>
+	<%= ingredient.title %>
+	<% end %>
+</div>
+<% end %>

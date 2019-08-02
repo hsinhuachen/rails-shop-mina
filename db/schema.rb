@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_01_093103) do
+ActiveRecord::Schema.define(version: 2019_08_02_075711) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2019_08_01_093103) do
     t.boolean "publish"
   end
 
+  create_table "ingredients", force: :cascade do |t|
+    t.string "title"
+    t.string "quantity"
+    t.boolean "publish"
+    t.integer "sorting"
+    t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -52,6 +62,33 @@ ActiveRecord::Schema.define(version: 2019_08_01_093103) do
     t.integer "sorting"
     t.text "report"
     t.text "spec"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.text "desc"
+    t.text "practice"
+    t.boolean "publish"
+    t.integer "sorting"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_taggings_on_recipe_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "sorting"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
