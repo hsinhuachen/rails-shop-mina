@@ -57,15 +57,8 @@ Trestle.resource(:recipes) do
 
     tab "ingredient", badge: recipe.ingredients.count, label: "食材" do
       if recipe.id?
-        row do
-          col(xs: 3) { 
-            concat content_tag(:input, nil, :type => 'text', name: "recipe[ingredients]", class: "form-control")
-          }
-          col(xs: 3) {  }
-          col(xs: 3) { concat link_to "新增食材", admin.path(:add_ingredient, id: recipe.id), method: :post ,class: "btn btn-primary" }
-
-        end
-      
+        concat link_to "新增食材", trestle.new_ingredients_admin_path, class: "btn btn-primary", data:{ "behavior": "dialog"}
+        
         table IngredientsAdmin.table, collection: recipe.ingredients
       else
         concat content_tag :p, '儲存食譜後可新增食材', class: "text-danger"
@@ -98,23 +91,11 @@ Trestle.resource(:recipes) do
       flash[:error] = flash_message("publish.cancel", title: "#{missile.title} 已取消發佈", message: "The %{lowercase_model_name} was successfully updated.")  
       redirect_to admin.path(:index, id: missile)
     end
-
-    def add_ingredient
-      missile = admin.find_instance(params)
-      
-      logger.info "-------------------"
-      logger.info params
-      logger.info "-------------------"
-
-      flash[:message] = flash_message("publish.success", title: "新增食材成功", message: "The %{lowercase_model_name} was successfully updated.")  
-      redirect_to admin.path(:edit, id: missile)
-    end
   end
 
   routes do
     post :pub_status, on: :member
     post :cancel_status, on: :member
-    post :add_ingredient, on: :member
   end
 
   # By default, all parameters passed to the update and create actions will be
