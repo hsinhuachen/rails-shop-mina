@@ -5,14 +5,8 @@ class Wish
 		@items = []
 	end
 
-	def add_item(product_id)
-		found_item = items.find {|item| item.product_id == product_id}
-
-		if found_item
-			found_item.remove_wish
-		else
-			@items << WishItem.new(product_id)
-		end
+	def add_wish(product_id, user_id)
+		Wish.create(product_id: product_id, user_id: user_id)
 	end
 
 	def empty?

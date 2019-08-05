@@ -67,4 +67,24 @@ RSpec.describe CartItem, type: :model do
 
 		expect(cart.total_price).to be 1000
 	end
+	it "單一訂單總金額超過2000元免運費, 否則運費收150元" do
+		cart = Cart.new
+
+		c1 = Category.create(title: "shop")
+		p1 = Product.create(title: "Product 1", price: 100, category_id: c1.id)
+		p2 = Product.create(title: "Product 2", price: 200, category_id: c1.id)
+
+		3.times { cart.add_item(p1.id) }
+		5.times { cart.add_item(p2.id) }
+
+		total_price = cart.total_price
+
+		if total_price < 2000
+			shipping = 150
+		else
+			shipping = 0
+		end
+
+		expect(shipping).to be 150
+	end
 end

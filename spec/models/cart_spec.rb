@@ -70,7 +70,9 @@ RSpec.describe Cart, type: :model do
 			expect(cart.items.first.quantity).to be 2
 		end
 		
-		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）"
+		it "特別活動可能可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百）" do
+
+		end 
 	end
 
 	describe "購物車進階功能" do
