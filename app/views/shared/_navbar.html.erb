@@ -2,6 +2,7 @@
   <h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to 'Logo', root_path %></h5>
   <nav id="nav" class="my-2 my-md-0 mr-md-3">
   	<%= link_to '關於我們', about_path, :class => "p-2 #{current_class?(about_path)}" %>
+    <%= link_to '食譜', recipes_path, :class => "p-2 #{current_class?(recipes_path)}" %>
     <%= link_to '商品列表', products_path, :class => "p-2 #{current_class?(products_path)}" %>
     <%= link_to "購物車(#{current_cart.items.count})", cart_path, :class => "p-2 #{current_class?(cart_path)}" %>
   </nav>

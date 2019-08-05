@@ -1,0 +1,33 @@
+<div class="list-head">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1 class="mid-title nomargin">料理食譜</h1>
+		</div>
+		<div class="col-xs-6 text-right">
+
+		</div>
+	</div> <!-- /row -->
+</div> <!-- /list-head -->
+<div class="tag_goods">
+	<div id="tag-toggle">
+		<% @tags.each do |tag| %>
+		<%= link_to tag.name, '#', class: "tag-item" %>
+		<% end %>
+	</div> <!-- /tag-toggle -->
+</div> <!-- /tag_goods -->
+
+<div class="list">
+	<div class="row">
+	<% @posts.each do |post| %>
+		<div class="col-sm-4">
+			<%= link_to image_tag(post.image.url, class: "img-fluid"), recipe_path(post), class: "shop-item-img" if post.image.url %>
+			<h2 class="shop-item-name text-center"><%= post.title %></h2>
+			<p class="tag-link text-center">
+			<% post.ingredients.each do |ingredient| %>
+				<%= link_to ingredient.title, '#', class: 'tag-link-item' %>
+			<% end %>
+			</p>
+		</div>
+	<% end %>
+	</div> <!-- /row -->
+</div> <!-- /list -->

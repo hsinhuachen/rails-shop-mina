@@ -10,6 +10,7 @@ Trestle.resource(:ingredients) do
   table do
     column :title, header: "食材"
     column :quantity, header: "數量"
+    column :sorting, header: "排序"
     actions
   end
 
@@ -21,7 +22,11 @@ Trestle.resource(:ingredients) do
       col(xs: 6) { text_field :quantity, label: "數量" }
     end
 
-    # select  :recipe_id, Recipe.all, { label: "食譜" }
+    if params["recipe_id"]
+      hidden_field :recipe_id, value: params["recipe_id"]
+    else
+      # select  :recipe_id, Recipe.all, { label: "食譜" }
+    end
 
     text_field :sorting
   end

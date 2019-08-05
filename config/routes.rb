@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 	resources :products, only: [:index, :show]
   	get "/products/category/:id", to: "products#index", :as => :category
   	get "/about", to: "about#index"
-  	get "/recipe", to: "recipe#index"
 
 	resource  :cart, only: [:show, :destroy] do
 	  	collection do
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :users, only: [:show]
+	resources :recipes, only: [:index, :show]
 
 	# resources :categories
 

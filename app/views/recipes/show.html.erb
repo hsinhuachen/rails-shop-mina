@@ -1,0 +1,33 @@
+<%= image_tag @post.image.url, class: "img-fluid" if @post.image.url %>
+
+<article class="article mid-wrap">
+	<h1 class="post-title" itemprop="headline"><%= @post.title %></h1>
+	<p><%= @post.desc %></p>
+
+	<div class="recipe-details">
+        <div class="recipe-group">
+			<div class="group-title">
+				<div class="bg-title">食材</div>
+			</div>
+			<div class="ingredients">
+				<% @post.ingredients.each do |ingredient| %>
+				<div class="ingredient" itemprop="ingredients">
+				  <div class="ingredient-name"><%= ingredient.title %></div>
+				  <div class="ingredient-unit"><%= ingredient.quantity %></div>
+				</div>
+				<% end %>
+			</div>
+		</div> <!-- /recipe-group -->
+    </div> <!-- /recipe-details -->
+    <div class="recipe-details">
+        <div class="recipe-group">
+			<div class="group-title">
+				<div class="bg-title">作法</div>
+			</div>
+			<p><%= @post.practice.html_safe %></p>	
+		</div> <!-- /recipe-group -->
+    </div> <!-- /recipe-details -->
+    <div class="controll">
+	    <%= link_to 'Back', recipes_path,class: "text-center b-block" %>
+	</div>
+</article> <!-- /mid-wrap -->

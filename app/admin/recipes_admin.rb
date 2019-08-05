@@ -57,7 +57,7 @@ Trestle.resource(:recipes) do
 
     tab "ingredient", badge: recipe.ingredients.count, label: "食材" do
       if recipe.id?
-        concat link_to "新增食材", trestle.new_ingredients_admin_path, class: "btn btn-primary", data:{ "behavior": "dialog"}
+        concat link_to "新增食材", trestle.new_ingredients_admin_path(:recipe_id => recipe.id), class: "btn btn-primary", data:{ "behavior": "dialog"}
         
         table IngredientsAdmin.table, collection: recipe.ingredients
       else

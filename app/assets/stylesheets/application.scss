@@ -16,6 +16,7 @@
 @import "cycle";
 @import "device";
 @import "product";
+@import "recipe";
 @import "cart";
 
 html{
@@ -46,6 +47,22 @@ p.normal{
   font-size: 18px;
   font-weight: 400;
   line-height: 200%;
+}
+
+.post-title{
+  color: #444444;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 125%;
+}
+
+.mid-title {
+  color: #444444;
+  font-size: 46px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 100%;
 }
 
 #header{
@@ -98,6 +115,10 @@ p.normal{
       }
     }
   }
+}
+
+.list-head{
+  padding: 30px 15px 0 15px;
 }
 
 .list{
@@ -245,6 +266,7 @@ p.normal{
   font-weight: 400;
   letter-spacing: 1.12px;
   line-height: 60px;
+  white-space: nowrap;
 }
 
 .article{
@@ -291,8 +313,54 @@ p.normal{
   white-space: nowrap;
 }
 
+.tag_goods{
+  padding: 50px 0 25px 0;
+}
+
+.tag-item {
+    color: #444444;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    margin: 0 14px 14px 0;
+    background: #edede5;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    display: inline-block;
+    &:hover, &.active{
+      font-weight: 500;
+      color: #EDE8E5;
+      background: #444444;
+    }
+}
+
+.tag-link-item {
+    color: #B28C6B;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.89px;
+    line-height: 145%;
+    -webkit-transition: color 0.6s ease;
+    -moz-transition: color 0.6s ease;
+    -ms-transition: color 0.6s ease;
+    -o-transition: color 0.6s ease;
+    transition: color 0.6s ease;
+}
+
 .member{
   padding-top: 40px;
+}
+
+.mid-wrap{
+  max-width: 770px;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
 }
 
 .side-nav{
@@ -319,6 +387,11 @@ p.normal{
     font-size: 18px;
     font-weight: 400;
   }
+}
+
+.controll{
+  padding-top: 40px;
+  display: block;
 }
 
 #footer{

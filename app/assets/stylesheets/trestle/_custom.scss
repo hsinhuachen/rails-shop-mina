@@ -57,6 +57,10 @@ p.help-block{
 	display:list-item;
 }
 
+a[href="/admin/ingredients"]{
+	display: none;
+}
+
 .radio{
 	margin-top: 0;
 	display: inline-block;
