@@ -1,33 +1,75 @@
 <div class="userform">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h2 class="order-info-title">設定會員帳號及密碼</h2>
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 mx-auto">
-      <h2>設定會員帳號及密碼</h2>
-
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="field">
-          <%= f.label :email, class: "col-form-label" %><br />
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="order-col col-md-6">
+      <div class="field">
+        <%= f.label :email, "電子信箱 *", class: "col-form-label" %>
+        <div class="col-form-control">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <p class="note">此 Email 將成為日後登入帳號</p>
         </div>
+      </div>
 
-        <div class="field">
-          <%= f.label :password, class: "col-form-label" %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
+      <div class="field">
+        <%= f.label :password, "登入密碼 *", class: "col-form-label" %>
+        <div class="col-form-control">
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          <% if @minimum_password_length %>
+          <p class="note">最少 <%= @minimum_password_length %> 個字元</p>
+          <% end %>
         </div>
+      </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation, class: "col-form-label" %><br />
+      <div class="field">
+        <%= f.label :password_confirmation, "確認密碼 *", class: "col-form-label" %>
+        <div class="col-form-control">
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
+      </div>
 
-        <div class="actions">
-          <%= f.submit "註冊", class: "btn btn-primary btn-block" %>
+      <div class="field">
+        <%= f.label :name, "姓名", class: "col-form-label" %>
+        <div class="col-form-control">
+          <%= f.text_field :name, class: "form-control" %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    </div> <!-- /order-col -->
+
+    <div class="order-col col-md-6">
+      <div class="field">
+        <%= f.label :mobile, "聯絡手機 *", class: "col-form-label" %>
+        <div class="col-form-control">
+          <%= f.text_field :mobile, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :tel, "聯絡電話", class: "col-form-label" %>
+        <div class="col-form-control">
+          <%= f.text_field :tel, class: "form-control" %>
+        </div>
+      </div>
+      
+      <div class="field">
+        <%= f.label :tel, "性別", class: "col-form-label" %>
+        <div class="col-form-control">
+          <label class="radio" for="user_gender_0">
+            <%= f.radio_button :gender, 0, :checked => true %> 
+            <i></i>男
+          </label>
+          <label class="radio" for="user_gender_1">
+            <%= f.radio_button :gender, 1 %>
+            <i></i>女
+          </label>
+        </div>
+      </div>
+
+    </div> <!-- /order-col -->
   </div> <!-- /row -->
+  <div class="control">
+    <%= f.submit "註冊", class: "btn btn-primary btn-block mx-auto" %>
+  </div>
+  <% end %>
 </div> <!-- /userform -->
