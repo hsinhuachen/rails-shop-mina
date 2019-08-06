@@ -39,6 +39,18 @@ class Cart
 		items.reduce(0) { |sum, item| sum + item.price } 
 	end
 
+	def shipping
+		if total_price < 2000
+			150
+		else
+			0
+		end
+	end
+
+	def final_price
+		total_price + shipping
+	end
+
 	def empty?
 		@items.empty?
 	end

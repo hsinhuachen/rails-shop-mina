@@ -77,14 +77,18 @@ RSpec.describe CartItem, type: :model do
 		3.times { cart.add_item(p1.id) }
 		5.times { cart.add_item(p2.id) }
 
-		total_price = cart.total_price
+		expect(cart.shipping).to be 150
+	end
+	it "計算加運費後的總金額" do
+		cart = Cart.new
 
-		if total_price < 2000
-			shipping = 150
-		else
-			shipping = 0
-		end
+		c1 = Category.create(title: "shop")
+		p1 = Product.create(title: "Product 1", price: 100, category_id: c1.id)
+		p2 = Product.create(title: "Product 2", price: 200, category_id: c1.id)
 
-		expect(shipping).to be 150
+		3.times { cart.add_item(p1.id) }
+		5.times { cart.add_item(p2.id) }
+
+		expect(cart.final_price).to be 1450
 	end
 end

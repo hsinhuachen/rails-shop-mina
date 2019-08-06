@@ -46,7 +46,7 @@ Things you may want to cover:
 
 ## add spec
 * rails g migration add_spec_to_projects spec:text
-
+* rails g migration add_desc_to_users
 
 ## devise
 * rails generate devise:install

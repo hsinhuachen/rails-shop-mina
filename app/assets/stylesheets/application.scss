@@ -255,9 +255,13 @@ p.normal{
 
 .shop-list-option{
   margin-bottom: 20px;
-  .input-group-btn .btn{
-    height: 60px;
-  }
+}
+
+.input-group-btn .btn{
+  height: 60px;
+  line-height: 60px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .shop-list-title{

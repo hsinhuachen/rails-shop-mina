@@ -1,13 +1,13 @@
 <div class="cart-collaterals bottomLine">
   <div class="row">
-    <div class="cart-shipping-info col-sm">
+    <div class="cart-shipping-info col-sm-7">
       運費計算與優惠辦法
       <ul>
         <li>購物未滿 NT2,000 元，單筆訂單運費 150 元（限單一定點）</li>
         <li>購物滿 NT2,000 元免運費（限單一定點）</li>
       </ul>
     </div> <!-- /col-md-6 -->
-    <div class="col-sm">
+    <div class="col-sm-5">
       <div class="cart-sum">
         <div class="row">
             <div class="col-6 text-right cart-title">商品總計</div>
@@ -23,7 +23,7 @@
           </div>
           <div class="row">
             <div class="col-6 text-right cart-title">運費</div>
-            <div class="col-6 text-right"><span class="text-danger">NT$ 0</span></div>
+            <div class="col-6 text-right"><span class="text-danger">NT$ <%=current_cart.shipping %></span></div>
           </div>
         </div> <!-- /cart-sum -->
     </div> <!-- /col-md-6 -->
@@ -32,12 +32,12 @@
 <hr class="bottomLine visible-sm visible-xs">
 <div class="cart-end">
     <div class="row">
-      <div class="col-sm hidden-sm hidden-xs"></div>
-      <div class="col-sm">
+      <div class="col-sm-7 hidden-sm hidden-xs"></div>
+      <div class="col-sm-5">
         <div class="cart-sum">
            <div class="row">
              <div class="col-6 text-right cart-title"><strong>商品總金額</strong></div>
-             <div class="col-6 text-right"><strong>NT$ <%= current_cart.total_price %></strong></div>
+             <div class="col-6 text-right"><strong>NT$ <%= current_cart.final_price %></strong></div>
            </div> <!-- /row -->
         </div> <!-- /cart-sum -->
       </div> <!-- /col-sm-6 -->
