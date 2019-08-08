@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_034524) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
-    t.integer "sorting"
+    t.integer "sorting", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_034524) do
   create_table "homes", force: :cascade do |t|
     t.string "image"
     t.text "desc"
-    t.integer "sorting"
+    t.integer "sorting", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "publish"
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 2019_08_06_034524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.boolean "publish"
-    t.boolean "latest"
+    t.boolean "publish", default: false
+    t.boolean "latest", default: false
     t.integer "category_id"
-    t.integer "sorting"
+    t.integer "sorting", default: 0
     t.text "report"
     t.text "spec"
   end
