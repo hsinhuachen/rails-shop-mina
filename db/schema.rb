@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_034524) do
+ActiveRecord::Schema.define(version: 2019_08_08_051324) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email"
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(version: 2019_08_06_034524) do
     t.integer "gender", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wishes", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_wishes_on_product_id"
+    t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
 end

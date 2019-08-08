@@ -38,6 +38,7 @@ Things you may want to cover:
 * rails g model Ingredients title:string quantity:string publish:boolean sorting:integer recipe_id:integer
 * rails g model tag name:string sorting:integer
 * rails g model tagging tag:belongs_to recipe:belongs_to
+* rails g model Wish product:references user:references
 
 ## carrierwave
 * rails generate uploader Image
