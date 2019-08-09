@@ -162,7 +162,17 @@ p.normal{
 }
 
 .product-item{
+  position: relative;
 	padding-bottom: 80px;
+}
+
+.wish{
+  font-size: 20px;
+  position: absolute;
+  right: 25px;
+  top: 5px;
+  z-index: 20;
+  display: block;
 }
 
 .section-right{

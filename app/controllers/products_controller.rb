@@ -17,6 +17,10 @@ class ProductsController < ApplicationController
 		add_breadcrumb product.title, product_path(params[:id])
 	end
 
+	def add
+
+	end
+
 	private
     def set_product
       @product = Product.find(params[:id])

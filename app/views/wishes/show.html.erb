@@ -1,0 +1,17 @@
+<div class="member">
+  <h2>會員中心</h2>
+  <div class="row" style="padding-top: 60px">
+    <%= render "shared/member-side" %>
+    <div class="content col-md-9">
+      <table width="100%" border="0">
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, product_path(post) %></td>
+          <td><%= link_to "移除", remove_user_wish_path(current_user.id,post.id), method: :put, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div> <!-- /content -->
+  </div> <!-- /row -->
+</div> <!-- /member -->
+    

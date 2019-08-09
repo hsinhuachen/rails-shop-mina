@@ -14,7 +14,8 @@ class CartsController < ApplicationController
 			# current_cart.add_item(product.id)
 
 			session[:cart1111] = current_cart.serialize
-			redirect_to products_path, notice: '已加入購物車'
+			# redirect_to products_path, notice: '已加入購物車'
+			redirect_back fallback_location: root_path, notice: '已加入購物車'
 		else
 			redirect_to products_path, notice: '查無此商品'
 		end

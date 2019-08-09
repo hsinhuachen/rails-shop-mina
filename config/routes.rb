@@ -16,7 +16,14 @@ Rails.application.routes.draw do
 	  	end
 	end
 
-	resources :users, only: [:show, :edit]
+	resources :users, only: [:show, :edit] do
+		resource  :wish, only: [:show] do
+			collection do
+				put :add, path: "add/:id"
+	  			put :remove, path: "remove/:id"
+			end
+		end
+	end
 	resources :recipes, only: [:index, :show]
 
 	# resources :categories
