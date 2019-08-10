@@ -323,7 +323,7 @@ p.normal{
   width: calc(100% - 110px);
 }
 
-.col-form-label {
+.col-form-label{
   width: 110px;
   color: #444444;
   font-size: 18px;
@@ -336,13 +336,22 @@ p.normal{
   white-space: nowrap;
 }
 
+.col-form-control p.normal {
+  color: #444444;
+  font-size: 18px;
+  font-weight: 500;
+  height: 60px;
+  line-height: 60px;
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 767px) {
   .order-col:nth-child(1){
-    padding-right: 40px;
+    padding-right: 20px;
   } 
 
   .order-col:nth-child(2){
-    padding-left: 40px;
+    padding-left: 20px;
   } 
 }
 
@@ -463,12 +472,30 @@ p.normal{
     color: #444444;
     font-size: 18px;
     font-weight: 400;
+    &.active{
+      color: #000;
+      font-weight: 600;
+    }
   }
 }
 
 .controll{
   padding-top: 40px;
   display: block;
+}
+
+.table{
+  font-size: 18px;
+  vertical-align: top;
+}
+
+.thumbImg{
+  max-width: 300px;
+  width: 40%;
+}
+
+.table-control{
+  text-align: right;
 }
 
 #footer{

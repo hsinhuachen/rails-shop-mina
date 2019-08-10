@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 $(function(){
+	$('#twzipcode').twzipcode();
+	
 	$(".add_to_cart").click(function(event) {
 		var url = $(this).attr("href");
 		var quantity = $(this).data("quantity");

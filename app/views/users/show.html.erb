@@ -3,7 +3,58 @@
 <div class="row" style="padding-top: 60px">
     <%= render "shared/member-side" %>
 	<div class="content col-md-9">
-		<%= @user.email %>
-	</div>
-	</div>
+      <div class="row">
+        <div class="order-col col-xs-12">
+          <div class="field">
+            <%= content_tag :div, "電子信箱", class: "col-form-label" %>
+            <div class="col-form-control">
+              <p class="normal"><%= current_user.email %></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= content_tag :div, "姓名", class: "col-form-label" %>
+            <div class="col-form-control">
+              <p class="normal"><%= current_user.name %></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= content_tag :div, "聯絡手機", class: "col-form-label" %>
+            <div class="col-form-control">
+              <p class="normal"><%= current_user.mobile %></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= content_tag :div, "聯絡電話", class: "col-form-label" %>
+            <div class="col-form-control">
+              <p class="normal"><%= current_user.tel %></p>
+            </div>
+          </div>
+          <div class="field">
+            <%= content_tag :div, "性別", class: "col-form-label" %>
+            <div class="col-form-control">
+            	<% if current_user.gender == 0 %>
+              		<p class="normal">男</p>
+              	<% else %>
+              		<p class="normal">女</p>
+              	<% end %>
+            </div>
+          </div> <!-- /field -->
+          <div class="field">
+            <label for="order-info-birthday" class="col-form-label">生日</label>
+            <div class="col-form-control">
+              <p class="normal"><%= current_user.year %> / <%= current_user.month %> / <%= current_user.day %></p>
+            </div> <!-- /col-form-control -->
+          </div> <!-- /field -->
+          <div class="field">
+            <label for="order-info-addr" class="col-form-label">聯絡地址</label>
+            <div class="col-form-control">
+              <p class="normal"><%= current_user.city %><%= current_user.district %><%= current_user.addr %></p>
+            </div> <!-- /col-form-control -->
+          </div> <!-- /field -->
+        </div> <!-- /order-col -->
+      </div> <!-- /row -->
+    </div> <!-- /content -->
 </div> <!-- /member -->

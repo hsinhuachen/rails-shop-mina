@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+	
+  store :address, accessors: [ :code, :city, :district, :addr ], coder: JSON
+  store :birthday, accessors: [ :year, :month, :day ], coder: JSON
   has_many :wishes
   has_many :products, through: :wishes
 end

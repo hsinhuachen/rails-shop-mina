@@ -10,7 +10,7 @@
           <div class="field">
             <%= f.label :email, "電子信箱", class: "col-form-label" %>
             <div class="col-form-control">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", readonly: "true" %>
+              <p class="normal"><%= current_user.email %></p>
             </div>
           </div>
 
@@ -44,6 +44,20 @@
               <%= f.text_field :name, class: "form-control" %>
             </div>
           </div>
+          <div class="field">
+            <%= f.label :birthday, "生日", class: "col-form-label" %>
+            <div class="col-form-control">
+              <div class="field">
+                  <%= f.select :year, (Time.zone.now.year - 70)..(Time.zone.now.year), {}, { :class => 'form-control' } %>
+              </div>
+              <div class="field">
+                  <%= f.select :month, 1..12, {}, { :class => 'form-control' } %>
+              </div>
+              <div class="field">
+                  <%= f.select :day, 1..31, {}, { :class => 'form-control' } %>
+              </div>
+            </div> <!--/col-form-control -->
+          </div> <!-- /field -->
         </div> <!-- /order-col -->
 
         <div class="order-col col-md-6">
@@ -65,15 +79,42 @@
             <%= f.label :tel, "性別", class: "col-form-label" %>
             <div class="col-form-control">
               <label class="radio" for="user_gender_0">
+                <% if current_user.gender == 0 %>
                 <%= f.radio_button :gender, 0, :checked => true %> 
+                <% else %>
+                <%= f.radio_button :gender, 0 %> 
+                <% end %>
                 <i></i>男
               </label>
               <label class="radio" for="user_gender_1">
+                <% if current_user.gender == 0 %>
                 <%= f.radio_button :gender, 1 %>
+                <% else %>
+                <%= f.radio_button :gender, 1, :checked => true %> 
+                <% end %>
                 <i></i>女
               </label>
             </div>
-          </div>
+          </div> <!-- /field -->
+          <div class="field">
+            <label for="order-info-addr" class="col-form-label">聯絡地址</label>
+            <div class="col-form-control">
+              <div class="account-list-row">
+                <div id="twzipcode">
+                  <div class="account-list-row field" data-role="zipcode"
+                     data-value="<%= current_user.code %>" data-name="user[code]"
+                     data-style="form-control"></div>
+                  <div class="account-list-row field" data-role="county"
+                     data-value="<%= current_user.city %>" data-name="user[city]"
+                     data-style="form-control"></div>
+                  <div class="account-list-row field" data-role="district"
+                     data-value="<%= current_user.district %>" data-name="user[district]"
+                     data-style="form-control"></div>
+                </div><!-- twzipcode -->
+              </div>
+              <input type="text" name="user[addr]" class="form-control" id="order-info-addr" value="<%= current_user.addr %>">
+            </div> <!-- /col-form-control -->
+          </div> <!-- /field -->
         </div> <!-- /order-col -->
       </div> <!-- /row -->
       <div class="control">
