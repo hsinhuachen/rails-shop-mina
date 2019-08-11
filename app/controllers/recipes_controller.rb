@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
 		if params[:id]
 			# @posts = Recipe.tag(params[:id]).where(publish: true)
 			tag = Tag.find(params["id"])
-			@posts = tag.recipes
+			@posts = tag.recipes.where(publish: true)
 		else
 			@posts = Recipe.where(publish: true)
 		end

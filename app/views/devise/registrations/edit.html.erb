@@ -48,13 +48,13 @@
             <%= f.label :birthday, "生日", class: "col-form-label" %>
             <div class="col-form-control">
               <div class="field">
-                  <%= f.select :year, (Time.zone.now.year - 70)..(Time.zone.now.year), {}, { :class => 'form-control' } %>
+                  <%= f.select :year, (Time.zone.now.year - 70)..(Time.zone.now.year), {prompt: '年'}, { :class => 'form-control' } %>
               </div>
               <div class="field">
-                  <%= f.select :month, 1..12, {}, { :class => 'form-control' } %>
+                  <%= f.select :month, 1..12, {prompt: '月'}, { :class => 'form-control' } %>
               </div>
               <div class="field">
-                  <%= f.select :day, 1..31, {}, { :class => 'form-control' } %>
+                  <%= f.select :day, 1..31, {prompt: '日'}, { :class => 'form-control' } %>
               </div>
             </div> <!--/col-form-control -->
           </div> <!-- /field -->

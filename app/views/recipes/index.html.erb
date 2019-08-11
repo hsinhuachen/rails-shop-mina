@@ -10,9 +10,14 @@
 </div> <!-- /list-head -->
 <div class="tag_goods">
 	<div id="tag-toggle">
+		<% if params[:id] %>
+		<%= link_to "All", recipes_path, class: "tag-item" %>
+		<% else %>
 		<%= link_to "All", recipes_path, class: "tag-item active" %>
+		<% end %>
+
 		<% @tags.each do |tag| %>
-		<%= link_to tag.name, tag_path(tag.id), class: "tag-item"  %>
+		<%= link_to tag.name, tag_path(tag.id), class: "tag-item #{current_class?(tag_path(tag.id))}"  %>
 		<% end %>
 	</div> <!-- /tag-toggle -->
 </div> <!-- /tag_goods -->
@@ -25,7 +30,7 @@
 			<h2 class="shop-item-name text-center"><%= post.title %></h2>
 			<p class="tag-link text-center">
 			<% post.tags.each do |tag| %>
-				<%= link_to tag.name, '#', class: 'tag-link-item' %>
+				<%= link_to tag.name, tag_path(tag.id), class: 'tag-link-item' %>
 			<% end %>
 			</p>
 		</div>
