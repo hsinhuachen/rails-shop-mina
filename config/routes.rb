@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
 	resources :products, only: [:index, :show]
   	get "/products/category/:id", to: "products#index", :as => :category
+  	get "/recipes/tag/:id", to: "recipes#index", :as => :tag
   	get "/about", to: "about#index"
 
 	resource  :cart, only: [:show, :destroy] do

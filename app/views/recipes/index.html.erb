@@ -10,8 +10,9 @@
 </div> <!-- /list-head -->
 <div class="tag_goods">
 	<div id="tag-toggle">
+		<%= link_to "All", recipes_path, class: "tag-item active" %>
 		<% @tags.each do |tag| %>
-		<%= link_to tag.name, '#', class: "tag-item" %>
+		<%= link_to tag.name, tag_path(tag.id), class: "tag-item"  %>
 		<% end %>
 	</div> <!-- /tag-toggle -->
 </div> <!-- /tag_goods -->

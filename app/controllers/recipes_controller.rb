@@ -2,7 +2,13 @@ class RecipesController < ApplicationController
   	add_breadcrumb "食譜", :recipes_path
 
 	def index
-		@posts = Recipe.where(publish: true)
+		if params[:id]
+			# @posts = Recipe.tag(params[:id]).where(publish: true)
+			tag = Tag.find(params["id"])
+			@posts = tag.recipes
+		else
+			@posts = Recipe.where(publish: true)
+		end
 		@tags = Tag.all
 	end
 
