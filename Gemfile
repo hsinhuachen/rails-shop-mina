@@ -47,10 +47,11 @@ gem "breadcrumbs_on_rails"
 
 gem 'aasm'
 gem 'devise'
+gem 'sqlite3'
 
-group :production do
-  gem 'pg'
-end
+# group :production do
+#   gem 'pg'
+# end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,7 +60,6 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.10'
   gem 'faker', '~> 1.8', '>= 1.8.7'
   gem 'hirb-unicode', '~> 0.0.5'
-  gem 'sqlite3'
 end
 
 group :development do
