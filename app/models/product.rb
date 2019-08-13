@@ -3,6 +3,8 @@ class Product < ApplicationRecord
 	belongs_to :category
 	has_many :wishes
 	has_many :users, through: :wishes
+	has_many :gallerys, -> {  order('sorting desc') }, dependent: :destroy
+	accepts_nested_attributes_for :gallerys
 	mount_uploader :image, ImageUploader
 	store :spec, accessors: [ :color, :homepage ], coder: JSON
 

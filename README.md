@@ -39,11 +39,13 @@ Things you may want to cover:
 * rails g model tag name:string sorting:integer
 * rails g model tagging tag:belongs_to recipe:belongs_to
 * rails g model Wish product:references user:references
+* rails g model Gallery filename:string sorting:integer product_id:integer
 
 ## carrierwave
 * rails generate uploader Image
 * rails generate uploader Home
 * rails generate uploader Recipephoto
+* rails generate uploader Gallery
 
 ## add spec
 * rails g migration add_spec_to_projects spec:text
