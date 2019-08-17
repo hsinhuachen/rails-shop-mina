@@ -91,13 +91,95 @@ Trestle.resource(:products) do
       editor     :report, label: "商品情報", height: 600
     end # end tab
 
-    row do
-      col(xs: 6) { datetime_field :updated_at }
-      col(xs: 6) { datetime_field :created_at }
-    end
+    tab "Gallery", label: "Gallery" do
+      form_group :gallerys, label: false do
+
+        concat content_tag(:div, nil, :class => "custom-file"){
+          raw_file_field :filename, :multiple => true, name: "gallerys[filename][]", class: "custom-file-input", id: "customFile"
+          concat content_tag(:label, "Choose file", class: "custom-file-label", for: "customFile")
+        }
+
+        # raw_file_field :name, :multiple => true, name: "gallerys[name][]"
+
+        mutinote = ["Upload a file less than 2MB. 可上傳多張","圖片尺寸 1920x1080px","照檔名排序, 0~9, a~z"]
+        concat content_tag(:ul, nil, :class => 'help-block') {
+          mutinote.collect do |item|
+            content_tag(:li, item)
+          end.join.html_safe
+        }
+
+        table GalleriesAdmin.table, collection: product.gallerys
+      end
+
+      concat(content_tag(:div, content_tag(:img),class: "upload-preview"))
+    end # end tab
   end
 
   controller do 
+    def create
+      self.instance = admin.build_instance(admin.permitted_params(params), params) 
+
+      if admin.save_instance(instance, params) 
+
+        # 新增至gallery
+        if params[:gallerys] != nil
+          params[:gallerys]['filename'].each do |img|
+            @picture = instance.gallerys.create("filename" => img)
+          end
+        end
+
+        respond_to do |format|  
+          format.html do  
+            flash[:message] = flash_message("create.success", title: "Success!", message: "The %{lowercase_model_name} was successfully created.")  
+            redirect_to_return_location(:create, instance, default: admin.instance_path(instance))  
+          end 
+          format.json { render json: instance, status: :created, location: admin.instance_path(instance) }  
+          format.js 
+        end 
+      else  
+        respond_to do |format|  
+          format.html do  
+            flash.now[:error] = flash_message("create.failure", title: "Warning!", message: "Please correct the errors below.") 
+            render "new", status: :unprocessable_entity 
+          end 
+          format.json { render json: instance.errors, status: :unprocessable_entity } 
+          format.js 
+        end 
+      end
+    end # end create
+
+    def update
+      admin.update_instance(instance, admin.permitted_params(params), params)
+
+      # 新增至gallery
+      if params[:gallerys] != nil
+        params[:gallerys]['filename'].each do |img|
+          @picture = instance.gallerys.create("filename" => img)
+        end
+      end
+
+      if admin.save_instance(instance, params)  
+        respond_to do |format|  
+          format.html do  
+            flash[:message] = flash_message("update.success", title: "Success!", message: "The %{lowercase_model_name} was successfully updated.")  
+            redirect_to_return_location(:update, instance, default: admin.instance_path(instance))  
+          end 
+          format.json { render json: instance, status: :ok }  
+          format.js 
+        end 
+      else  
+        respond_to do |format|  
+          format.html do  
+            flash.now[:error] = flash_message("update.failure", title: "Warning!", message: "Please correct the errors below.") 
+            render "show", status: :unprocessable_entity  
+          end 
+          format.json { render json: instance.errors, status: :unprocessable_entity } 
+          format.js 
+        end 
+      end
+
+    end  # end update
+
     def pub_latest
       missile = admin.find_instance(params)
       missile.update("latest" => true);
