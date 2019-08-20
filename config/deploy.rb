@@ -12,7 +12,7 @@ require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 set :application_name, 'rails-shop'
 set :domain, '52.194.212.6'
 set :deploy_to, '/var/www/shop'
-set :repository, 'git@github.com:hsinhuachen/rails-shop.git'
+set :repository, 'git@github.com:hsinhuachen/rails-shop-mina.git'
 set :branch, 'master'
 
 # Optional settings:
