@@ -41,7 +41,7 @@ gem 'trestle'
 gem 'trestle-tinymce', '~> 0.1.3'
 gem 'trestle-auth'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick', ">= 4.9.4"
 gem "breadcrumbs_on_rails"
 
